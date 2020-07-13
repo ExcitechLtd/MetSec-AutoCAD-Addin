@@ -13,15 +13,15 @@ Option Explicit On
 
 
 Namespace My
-
-    <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0"),
-     Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>
+    
+    <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0"),  _
+     Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
     Partial Friend NotInheritable Class MySettings
         Inherits Global.System.Configuration.ApplicationSettingsBase
-
-        Private Shared defaultInstance As MySettings = CType(Global.System.Configuration.ApplicationSettingsBase.Synchronized(New MySettings()), MySettings)
-
+        
+        Private Shared defaultInstance As MySettings = CType(Global.System.Configuration.ApplicationSettingsBase.Synchronized(New MySettings()),MySettings)
+        
 #Region "My.Settings Auto-Save Functionality"
 #If _MyType = "WindowsForms" Then
     Private Shared addedHandler As Boolean
@@ -36,10 +36,10 @@ Namespace My
     End Sub
 #End If
 #End Region
-
+        
         Public Shared ReadOnly Property [Default]() As MySettings
             Get
-
+                
 #If _MyType = "WindowsForms" Then
                If Not addedHandler Then
                     SyncLock addedHandlerLockObject
@@ -53,84 +53,84 @@ Namespace My
                 Return defaultInstance
             End Get
         End Property
-
-        <Global.System.Configuration.UserScopedSettingAttribute(),
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
-         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
         Public Property VaultConnectionName() As String
             Get
-                Return CType(Me("VaultConnectionName"), String)
+                Return CType(Me("VaultConnectionName"),String)
             End Get
             Set
-                Me("VaultConnectionName") = Value
+                Me("VaultConnectionName") = value
             End Set
         End Property
-
-        <Global.System.Configuration.UserScopedSettingAttribute(),
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>
-        Public Property TemplateColumnCollection() As ExcitechDOCS.AutoCAD.Settings.ColumnCollection
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property TemplateColumnCollection() As Global.ExcitechDOCS.Settings.ColumnCollection
             Get
-                Return CType(Me("TemplateColumnCollection"), ExcitechDOCS.AutoCAD.Settings.ColumnCollection)
+                Return CType(Me("TemplateColumnCollection"),Global.ExcitechDOCS.Settings.ColumnCollection)
             End Get
             Set
-                Me("TemplateColumnCollection") = Value
+                Me("TemplateColumnCollection") = value
             End Set
         End Property
-
-        <Global.System.Configuration.UserScopedSettingAttribute(),
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>
-        Public Property UpdateReferenceWindowPlacement() As ExcitechDOCS.AutoCAD.Settings.WindowPlacement
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property UpdateReferenceWindowPlacement() As Global.ExcitechDOCS.Settings.WindowPlacement
             Get
-                Return CType(Me("UpdateReferenceWindowPlacement"), ExcitechDOCS.AutoCAD.Settings.WindowPlacement)
+                Return CType(Me("UpdateReferenceWindowPlacement"),Global.ExcitechDOCS.Settings.WindowPlacement)
             End Get
             Set
-                Me("UpdateReferenceWindowPlacement") = Value
+                Me("UpdateReferenceWindowPlacement") = value
             End Set
         End Property
-
-        <Global.System.Configuration.UserScopedSettingAttribute(),
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>
-        Public Property UpdateReferenceColumnCollection() As ExcitechDOCS.AutoCAD.Settings.ColumnCollection
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property UpdateReferenceColumnCollection() As Global.ExcitechDOCS.Settings.ColumnCollection
             Get
-                Return CType(Me("UpdateReferenceColumnCollection"), ExcitechDOCS.AutoCAD.Settings.ColumnCollection)
+                Return CType(Me("UpdateReferenceColumnCollection"),Global.ExcitechDOCS.Settings.ColumnCollection)
             End Get
             Set
-                Me("UpdateReferenceColumnCollection") = Value
+                Me("UpdateReferenceColumnCollection") = value
             End Set
         End Property
-
-        <Global.System.Configuration.UserScopedSettingAttribute(),
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
-         Global.System.Configuration.DefaultSettingValueAttribute("True")>
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
         Public Property ReopenDrawingAfterWorkflowTransition() As Boolean
             Get
-                Return CType(Me("ReopenDrawingAfterWorkflowTransition"), Boolean)
+                Return CType(Me("ReopenDrawingAfterWorkflowTransition"),Boolean)
             End Get
             Set
-                Me("ReopenDrawingAfterWorkflowTransition") = Value
+                Me("ReopenDrawingAfterWorkflowTransition") = value
             End Set
         End Property
-
-        <Global.System.Configuration.UserScopedSettingAttribute(),
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
-         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
         Public Property TemplateSearchTerm() As String
             Get
-                Return CType(Me("TemplateSearchTerm"), String)
+                Return CType(Me("TemplateSearchTerm"),String)
             End Get
             Set
-                Me("TemplateSearchTerm") = Value
+                Me("TemplateSearchTerm") = value
             End Set
         End Property
-
-        <Global.System.Configuration.UserScopedSettingAttribute(),
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>
-        Public Property TemplateWindowPlacement() As ExcitechDOCS.AutoCAD.Settings.WindowPlacement
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property TemplateWindowPlacement() As Global.ExcitechDOCS.Settings.WindowPlacement
             Get
-                Return CType(Me("TemplateWindowPlacement"), ExcitechDOCS.AutoCAD.Settings.WindowPlacement)
+                Return CType(Me("TemplateWindowPlacement"),Global.ExcitechDOCS.Settings.WindowPlacement)
             End Get
             Set
-                Me("TemplateWindowPlacement") = Value
+                Me("TemplateWindowPlacement") = value
             End Set
         End Property
     End Class
