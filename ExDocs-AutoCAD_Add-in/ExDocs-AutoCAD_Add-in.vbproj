@@ -54,22 +54,18 @@
     <Reference Include="accoremgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Autodesk Dependencies\accoremgd.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="acdbmgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Autodesk Dependencies\acdbmgd.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="acmgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Autodesk Dependencies\acmgd.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="AdWindows, Version=5.2.10.200, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Autodesk Dependencies\AdWindows.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="ExcitechDOCS.AutoCAD.Settings, Version=4.1.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ExcitechDOCS.AutoCAD.Settings.4.1.5\lib\net45\ExcitechDOCS.AutoCAD.Settings.dll</HintPath>
@@ -268,6 +264,15 @@
     <Content Include="Autodesk Dependencies\AdWindows.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ExcitechDOCS.AutoCAD.IPlugin\ExcitechDOCS.AutoCAD.IPlugin.vbproj">
+      <Project>{3b03d338-c1ce-4fb6-adb8-1788a1831731}</Project>
+      <Name>ExcitechDOCS.AutoCAD.IPlugin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
     <COMReference Include="MFilesAPI">
       <Guid>{B9C079AA-92DD-4FB4-A0E0-AA3198955B45}</Guid>
       <VersionMajor>1</VersionMajor>
@@ -277,15 +282,6 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ExcitechDOCS.AutoCAD.IPlugin\ExcitechDOCS.AutoCAD.IPlugin.vbproj">
-      <Project>{3b03d338-c1ce-4fb6-adb8-1788a1831731}</Project>
-      <Name>ExcitechDOCS.AutoCAD.IPlugin</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>

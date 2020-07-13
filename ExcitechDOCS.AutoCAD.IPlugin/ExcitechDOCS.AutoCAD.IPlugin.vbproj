@@ -45,7 +45,8 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AdWindows">
+    <Reference Include="AdWindows, Version=5.2.10.200, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ExDocs-AutoCAD_Add-in\Autodesk Dependencies\AdWindows.dll</HintPath>
     </Reference>
     <Reference Include="System" />

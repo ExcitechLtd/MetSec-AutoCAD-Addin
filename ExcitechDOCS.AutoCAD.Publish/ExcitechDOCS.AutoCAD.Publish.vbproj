@@ -45,18 +45,21 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="accoremgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64" />
+    <Reference Include="accoremgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExDocs-AutoCAD_Add-in\Autodesk Dependencies\accoremgd.dll</HintPath>
+    </Reference>
     <Reference Include="acdbmgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Dependencies\AutoCAD\acdbmgd.dll</HintPath>
+      <HintPath>..\ExDocs-AutoCAD_Add-in\Autodesk Dependencies\acdbmgd.dll</HintPath>
     </Reference>
     <Reference Include="acmgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Dependencies\AutoCAD\acmgd.dll</HintPath>
+      <HintPath>..\ExDocs-AutoCAD_Add-in\Autodesk Dependencies\acmgd.dll</HintPath>
     </Reference>
     <Reference Include="AdWindows, Version=5.2.10.200, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Dependencies\AutoCAD\AdWindows.dll</HintPath>
+      <HintPath>..\ExDocs-AutoCAD_Add-in\Autodesk Dependencies\AdWindows.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
