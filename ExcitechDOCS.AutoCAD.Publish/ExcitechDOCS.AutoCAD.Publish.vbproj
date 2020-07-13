@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{68BC2FEC-8959-4EB4-B839-4841AEC25A90}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ExcitechDOCS.AutoCAD.Publish</RootNamespace>
+    <AssemblyName>ExcitechDOCS.AutoCAD.Publish</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>ExcitechDOCS.AutoCAD.Publish.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>ExcitechDOCS.AutoCAD.Publish.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="accoremgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64" />
+    <Reference Include="acdbmgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dependencies\AutoCAD\acdbmgd.dll</HintPath>
+    </Reference>
+    <Reference Include="acmgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dependencies\AutoCAD\acmgd.dll</HintPath>
+    </Reference>
+    <Reference Include="AdWindows, Version=5.2.10.200, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dependencies\AutoCAD\AdWindows.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\AutoCADOverRuleCopy.vb" />
+    <Compile Include="Classes\Helpers\AutoCADHelper.vb" />
+    <Compile Include="Classes\DrawingTemplate.vb" />
+    <Compile Include="Classes\Helpers\LayoutHelper.vb" />
+    <Compile Include="Classes\Helpers\LoggingHelper.vb" />
+    <Compile Include="Classes\Helpers\MFilesHelper.vb" />
+    <Compile Include="Classes\modMain.vb" />
+    <Compile Include="Classes\ObjectClassWrapper.vb" />
+    <Compile Include="Classes\PropertyWrapper.vb" />
+    <Compile Include="Classes\Publishing\AutoCADPlotHelper.vb" />
+    <Compile Include="Classes\Publishing\PublishLayoutDelegate.vb" />
+    <Compile Include="Classes\RibbonCommandHandler.vb" />
+    <Compile Include="Classes\Settings.vb" />
+    <Compile Include="Classes\VaultStatus.vb" />
+    <Compile Include="Classes\ViewArea\exportFiles.vb" />
+    <Compile Include="Classes\ViewArea\ViewArea.vb" />
+    <Compile Include="Classes\Helpers\ViewHelper.vb" />
+    <Compile Include="Forms\frmErrorDetails.Designer.vb">
+      <DependentUpon>frmErrorDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmErrorDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmInputDialog.Designer.vb">
+      <DependentUpon>frmInputDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmInputDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMFilesValueChooser.Designer.vb">
+      <DependentUpon>frmMFilesValueChooser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMFilesValueChooser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPublishLayouts.Designer.vb">
+      <DependentUpon>frmPublishLayouts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPublishLayouts.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPublishProcess.Designer.vb">
+      <DependentUpon>frmPublishProcess.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPublishProcess.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSettings.Designer.vb">
+      <DependentUpon>frmSettings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSettings.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Plugin.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\frmErrorDetails.resx">
+      <DependentUpon>frmErrorDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmInputDialog.resx">
+      <DependentUpon>frmInputDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMFilesValueChooser.resx">
+      <DependentUpon>frmMFilesValueChooser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPublishLayouts.resx">
+      <DependentUpon>frmPublishLayouts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPublishProcess.resx">
+      <DependentUpon>frmPublishProcess.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSettings.resx">
+      <DependentUpon>frmSettings.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExcitechDOCS.AutoCAD.IPlugin\ExcitechDOCS.AutoCAD.IPlugin.vbproj">
+      <Project>{3b03d338-c1ce-4fb6-adb8-1788a1831731}</Project>
+      <Name>ExcitechDOCS.AutoCAD.IPlugin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dependencies\AutoCAD\accoremgd.dll" />
+    <Content Include="Dependencies\AutoCAD\acdbmgd.dll" />
+    <Content Include="Dependencies\AutoCAD\acmgd.dll" />
+    <Content Include="Dependencies\AutoCAD\AdWindows.dll" />
+    <Content Include="Dependencies\MFiles\MFilesApi.dll" />
+    <Content Include="Resources\backgroundProcessing_24.png" />
+    <Content Include="Resources\Browse_16.png" />
+    <Content Include="Resources\Browse_32.png" />
+    <Content Include="Resources\Browse_40.png" />
+    <Content Include="Resources\class_16.png" />
+    <Content Include="Resources\Complete_16.png" />
+    <Content Include="Resources\Complete_40.png" />
+    <Content Include="Resources\DOCS_16.png" />
+    <Content Include="Resources\DOCS_32.png" />
+    <Content Include="Resources\DOCS_40.png" />
+    <Content Include="Resources\dwg_20.png" />
+    <Content Include="Resources\EditProperties_16.png" />
+    <Content Include="Resources\EditProperties_32.png" />
+    <Content Include="Resources\EditProperties_40.png" />
+    <Content Include="Resources\Empty_24.png" />
+    <Content Include="Resources\failed_24_2.png" />
+    <Content Include="Resources\Info_24.png" />
+    <Content Include="Resources\localdisk_16.png" />
+    <Content Include="Resources\pdf_20.png" />
+    <Content Include="Resources\processing_24.png" />
+    <Content Include="Resources\PublishSheets_16.png" />
+    <Content Include="Resources\PublishSheets_24.png" />
+    <Content Include="Resources\PublishSheets_40.png" />
+    <Content Include="Resources\settings_40.png" />
+    <Content Include="Resources\success_24_2.png" />
+    <Content Include="Resources\Warning_24_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="MFilesAPI">
+      <Guid>{B9C079AA-92DD-4FB4-A0E0-AA3198955B45}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>

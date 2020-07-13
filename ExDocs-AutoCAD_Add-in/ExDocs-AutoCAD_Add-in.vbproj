@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{B569BC1F-44AF-4262-8F37-598ACE52B937}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ExcitechDOCS_AutoCAD_Addin</RootNamespace>
+    <AssemblyName>ExcitechDOCS_AutoCAD_Addin</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>ExcitechDOCS_AutoCAD_Addin.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>ExcitechDOCS_AutoCAD_Addin.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Text</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="accoremgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Autodesk Dependencies\accoremgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acdbmgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Autodesk Dependencies\acdbmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acmgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Autodesk Dependencies\acmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AdWindows, Version=5.2.10.200, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Autodesk Dependencies\AdWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ExcitechDOCS.AutoCAD.Settings, Version=4.1.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcitechDOCS.AutoCAD.Settings.4.1.5\lib\net45\ExcitechDOCS.AutoCAD.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcitechDOCS.LicenseManager, Version=4.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcitechDOCS.LicenseManager.4.1.4\lib\net40\ExcitechDOCS.LicenseManager.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="ExcitechDOCS.AutoCAD.Settings" />
+    <Import Include="ExcitechDOCS.LicenseManager" />
+    <Import Include="MFilesAPI" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\ExcitechOperations.vb" />
+    <Compile Include="Classes\MFilesReferenceHelper.vb" />
+    <Compile Include="Classes\PluginHelper.vb" />
+    <Compile Include="Classes\SFDMFDReferenceHelper.vb" />
+    <Compile Include="Classes\RibbonCommandHandler.vb" />
+    <Compile Include="Classes\UpdateReferenceItem.vb" />
+    <Compile Include="Classes\VaultStatus.vb" />
+    <Compile Include="Classes\WindowWrapper.vb" />
+    <Compile Include="Classes\WorkflowCommandHandler.vb" />
+    <Compile Include="Forms\frmAbout.Designer.vb">
+      <DependentUpon>frmAbout.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAbout.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAcadTemplates.Designer.vb">
+      <DependentUpon>frmAcadTemplates.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAcadTemplates.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmClientSettings.Designer.vb">
+      <DependentUpon>frmClientSettings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmClientSettings.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPDFOptions.Designer.vb">
+      <DependentUpon>frmPDFOptions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPDFOptions.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPDFPreview.Designer.vb">
+      <DependentUpon>frmPDFPreview.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPDFPreview.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmUpdateReferences.Designer.vb">
+      <DependentUpon>frmUpdateReferences.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmUpdateReferences.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmWorkflowComment.Designer.vb">
+      <DependentUpon>frmWorkflowComment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmWorkflowComment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\Extensions.vb" />
+    <Compile Include="Modules\modListViewExtension.vb" />
+    <Compile Include="Modules\modMain.vb" />
+    <Compile Include="Classes\Ribbon.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\frmAbout.resx">
+      <DependentUpon>frmAbout.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAcadTemplates.resx">
+      <DependentUpon>frmAcadTemplates.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmClientSettings.resx">
+      <DependentUpon>frmClientSettings.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPDFOptions.resx">
+      <DependentUpon>frmPDFOptions.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPDFPreview.resx">
+      <DependentUpon>frmPDFPreview.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmUpdateReferences.resx">
+      <DependentUpon>frmUpdateReferences.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmWorkflowComment.resx">
+      <DependentUpon>frmWorkflowComment.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Libraries\MFilesApi.dll" />
+    <None Include="Resources\Refresh_16.png" />
+    <None Include="Resources\Refresh_20.png" />
+    <None Include="Resources\Properties_16.png" />
+    <None Include="Resources\Delete_20.png" />
+    <None Include="Resources\MagnifyingGlass_20.png" />
+    <None Include="Resources\AutoCAD_About.png" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\New_20.png" />
+    <None Include="Resources\Workflow_20.png" />
+    <None Include="Resources\UndoCheckOut_20.png" />
+    <None Include="Resources\SyncToDOCS_20.png" />
+    <None Include="Resources\SyncFromDOCS_20.png" />
+    <None Include="Resources\Save_20.png" />
+    <None Include="Resources\References 20.png" />
+    <None Include="Resources\PDF_20.png" />
+    <None Include="Resources\Open_20.png" />
+    <None Include="Resources\History_20.png" />
+    <None Include="Resources\EditProperties_20.png" />
+    <None Include="Resources\CheckOut_20.png" />
+    <None Include="Resources\CheckIn_20.png" />
+    <None Include="Resources\Browse_20.png" />
+    <None Include="Resources\EditProperties_40.png" />
+    <None Include="Resources\References_40.png" />
+    <None Include="Resources\DOCS_40.png" />
+    <None Include="Resources\DOCSLOGO_40.png" />
+    <None Include="Resources\History_16.png" />
+    <None Include="Resources\DOCS_20.png" />
+    <None Include="Resources\Workflow_40.png" />
+    <None Include="Resources\UndoCheckOut_40.png" />
+    <None Include="Resources\SyncToDOCS_40.png" />
+    <None Include="Resources\SyncFromDOCS_40.png" />
+    <None Include="Resources\Settings_20.png" />
+    <None Include="Resources\Save_40.png" />
+    <None Include="Resources\PDF_40.png" />
+    <None Include="Resources\Open_40.png" />
+    <None Include="Resources\Offline_20.png" />
+    <None Include="Resources\New_40.png" />
+    <None Include="Resources\Info_20.png" />
+    <None Include="Resources\History_40.png" />
+    <None Include="Resources\Disconnected_20.png" />
+    <None Include="Resources\CheckOut_40.png" />
+    <None Include="Resources\CheckIn_40.png" />
+    <None Include="Resources\Browse_40.png" />
+    <None Include="Resources\Unchecked_16.png" />
+    <None Include="Resources\Checked_16.png" />
+    <Content Include="Autodesk Dependencies\accoremgd.dll" />
+    <Content Include="Autodesk Dependencies\acdbmgd.dll" />
+    <Content Include="Autodesk Dependencies\acmgd.dll" />
+    <Content Include="Autodesk Dependencies\AdWindows.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="MFilesAPI">
+      <Guid>{B9C079AA-92DD-4FB4-A0E0-AA3198955B45}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExcitechDOCS.AutoCAD.IPlugin\ExcitechDOCS.AutoCAD.IPlugin.vbproj">
+      <Project>{3b03d338-c1ce-4fb6-adb8-1788a1831731}</Project>
+      <Name>ExcitechDOCS.AutoCAD.IPlugin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

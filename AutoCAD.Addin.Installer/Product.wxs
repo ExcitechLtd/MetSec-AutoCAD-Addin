@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?define VersionFull = 1.0.0.0 ?>
+<?define VersionShort = 1.0 ?>
+<?define VersionDescription = ?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+    <Product Id="*" Name="ExcitechDOCS AutoCAD Addin Installer" Language="1033" Version="1.0.0.0" Manufacturer="Excitech" UpgradeCode="33ca6449-9b4d-4694-bc3b-57369acc149e">
+        <Package InstallerVersion="200" Compressed="yes" Platform="x64" InstallScope="perMachine" Comments="Version: $(var.VersionFull) $(var.VersionDescription)" />
+        <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+        <MediaTemplate EmbedCab="yes" />
+        <Feature Id="featureAutoCADAddin" Title="ExcitechDOCS AutoCAD Addin" Level="1" Description="ExcitechDOCS AutoCAD Addin">
+            <ComponentRef Id="ACADLogsFolder" />
+            <ComponentRef Id="ACADSettingsFolder" />
+            <ComponentRef Id="ACADTempfolder" />
+            <ComponentRef Id="compACADPlugin" />
+            <ComponentRef Id="compACADAddin" />
+        </Feature>
+        <UI>
+            <InstallUISequence>
+                <Custom Action="actionCheckInstalledApplication" Before="PrepareDlg" />
+            </InstallUISequence>
+        </UI>
+        <PropertyRef Id="WIX_IS_NETFRAMEWORK_46_OR_LATER_INSTALLED" />
+        <!--Properties-->
+        <Property Id="ACAD_INSTALLED" Secure="yes">0</Property>
+        <WixVariable Id="WixUIBannerBmp" Value="Images\Installer_Top_Banner.bmp" />
+        <WixVariable Id="WixUIDialogBmp" Value="Images\Installer_Background.bmp" />
+        <WixVariable Id="WixUILicenseRtf" Value="InstallFiles\license-agreement.rtf" />
+        <UIRef Id="WixUI_FeatureTree" />
+        <DirectoryRef Id="dirLogsData">
+            <Component Guid="2855F7FD-C91A-4CE4-A4A3-8E0D2F73C581" Id="ACADLogsFolder" KeyPath="no">
+                <CreateFolder>
+                    <util:PermissionEx User="Everyone" ChangePermission="yes" GenericAll="yes" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension" />
+                </CreateFolder>
+            </Component>
+        </DirectoryRef>
+        <DirectoryRef Id="dirACADSettings">
+            <Component Guid="38EDCFCB-74EE-4A75-96F1-0700F0F80C62" Id="ACADSettingsFolder" KeyPath="no">
+                <CreateFolder>
+                    <util:PermissionEx User="Everyone" ChangePermission="yes" GenericAll="yes" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension" />
+                </CreateFolder>
+            </Component>
+        </DirectoryRef>
+        <DirectoryRef Id="dirACADTemp">
+            <Component Guid="D2BE7316-B7C2-4E99-BC4B-C965F9E93A8B" Id="ACADTempfolder" KeyPath="no">
+                <CreateFolder>
+                    <util:PermissionEx User="Everyone" ChangePermission="yes" GenericAll="yes" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension" />
+                </CreateFolder>
+            </Component>
+        </DirectoryRef>
+        <Binary Id="customAction" SourceFile="..\WIX_CustomAction\bin\$(var.Configuration)\WIX_CustomAction.CA.dll" />
+        <CustomAction Id="actionCheckInstalledApplication" BinaryKey="customAction" DllEntry="CheckInstalledApplications" Execute="immediate" Return="check" />
+        <CustomAction Id="actionACADProperty" Property="actionAddACADRegistry" Value="AutoCADInstallLocation=[#EXCITECHDOCS.AUTOCAD.ADDIN.DLL]" />
+        <CustomAction Id="actionAddACADRegistry" BinaryKey="customAction" DllEntry="AddAutoCADRegistry" Execute="deferred" Impersonate="no" Return="check" />
+        <CustomAction Id="actionRemoveACADRegistry" BinaryKey="customAction" DllEntry="RemoveAutoCADRegistry" Execute="deferred" Impersonate="no" Return="check" />
+        <InstallExecuteSequence>
+            <Custom Action="actionACADProperty" Before="actionAddACADRegistry" />
+            <Custom Action="actionAddACADRegistry" Before="InstallFinalize">(&amp;featureAutoCADAddin=3)</Custom>
+            <Custom Action="actionRemoveACADRegistry" Before="InstallFinalize">(&amp;featureAutoCADAddin=2) AND (!featureAutoCADAddin=3)</Custom>
+        </InstallExecuteSequence>
+        <Icon Id="ExcitechIcon" SourceFile="$(var.ProjectDir)Images\Excitech.ico" />
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Directory Id="ProgramFiles64Folder">
+                <Directory Id="INSTALLFOLDER" Name="Excitech DOCS">
+                    <Directory Id="dirClient" Name="Client">
+                        <Directory Id="dirACADBin" Name="AutoCAD Addin">
+                            <Directory Id="dirACADPlugin" Name="Plugins">
+                                <Component Guid="3C6102C4-9287-4FA4-BB47-4CD26F04D6BF" Id="compACADPlugin" Win64="yes">
+                                    <File Id="EXCITECHDOCS.AUTOCAD.PUBLISH.DLL" Name="ExcitechDOCS.AutoCAD.Publish.dll" Source="InstallFiles\Plugin\ExcitechDOCS.AutoCAD.Publish.dll" />
+                                    <File Id="EXCITECHDOCS.AUTOCAD.PUBLISH.DLL.CONFIG" Name="ExcitechDOCS.AutoCAD.Publish.dll.config" Source="InstallFiles\Plugin\ExcitechDOCS.AutoCAD.Publish.dll.config" />
+                                    <File Id="EXCITECHDOCS.AUTOCAD.PUBLISH.PDB" Name="ExcitechDOCS.AutoCAD.Publish.pdb" Source="InstallFiles\Plugin\ExcitechDOCS.AutoCAD.Publish.pdb" />
+                                    <File Id="EXCITECHDOCS.AUTOCAD.PUBLISH.XML" Name="ExcitechDOCS.AutoCAD.Publish.xml" Source="InstallFiles\Plugin\ExcitechDOCS.AutoCAD.Publish.xml" />
+                                </Component>
+                            </Directory>
+                            <Component Guid="F308C504-F27F-4C13-8C71-50032E43C529" Id="compACADAddin" Win64="yes">
+                                <File Id="ACCOREMGD.DLL" Name="accoremgd.dll" Source="InstallFiles\AutoCAD Addin\accoremgd.dll" />
+                                <File Id="ACDBMGD.DLL" Name="acdbmgd.dll" Source="InstallFiles\AutoCAD Addin\acdbmgd.dll" />
+                                <File Id="ACMGD.DLL" Name="acmgd.dll" Source="InstallFiles\AutoCAD Addin\acmgd.dll" />
+                                <File Id="ADWINDOWS.DLL" Name="AdWindows.dll" Source="InstallFiles\AutoCAD Addin\AdWindows.dll" />
+                                <File Id="DEVEXPRESS.DATA.V19.2.DLL" Name="DevExpress.Data.v19.2.dll" Source="InstallFiles\AutoCAD Addin\DevExpress.Data.v19.2.dll" />
+                                <File Id="DEVEXPRESS.DATA.V19.2.XML" Name="DevExpress.Data.v19.2.xml" Source="InstallFiles\AutoCAD Addin\DevExpress.Data.v19.2.xml" />
+                                <File Id="DEVEXPRESS.IMAGES.V19.2.DLL" Name="DevExpress.Images.v19.2.dll" Source="InstallFiles\AutoCAD Addin\DevExpress.Images.v19.2.dll" />
+                                <File Id="DEVEXPRESS.OFFICE.V19.2.CORE.DLL" Name="DevExpress.Office.v19.2.Core.dll" Source="InstallFiles\AutoCAD Addin\DevExpress.Office.v19.2.Core.dll" />
+                                <File Id="DEVEXPRESS.OFFICE.V19.2.CORE.XML" Name="DevExpress.Office.v19.2.Core.xml" Source="InstallFiles\AutoCAD Addin\DevExpress.Office.v19.2.Core.xml" />
+                                <File Id="DEVEXPRESS.PDF.V19.2.CORE.DLL" Name="DevExpress.Pdf.v19.2.Core.dll" Source="InstallFiles\AutoCAD Addin\DevExpress.Pdf.v19.2.Core.dll" />
+                                <File Id="DEVEXPRESS.PDF.V19.2.CORE.XML" Name="DevExpress.Pdf.v19.2.Core.xml" Source="InstallFiles\AutoCAD Addin\DevExpress.Pdf.v19.2.Core.xml" />
+                                <File Id="DEVEXPRESS.PRINTING.V19.2.CORE.DLL" Name="DevExpress.Printing.v19.2.Core.dll" Source="InstallFiles\AutoCAD Addin\DevExpress.Printing.v19.2.Core.dll" />
+                                <File Id="DEVEXPRESS.PRINTING.V19.2.CORE.XML" Name="DevExpress.Printing.v19.2.Core.xml" Source="InstallFiles\AutoCAD Addin\DevExpress.Printing.v19.2.Core.xml" />
+                                <File Id="DEVEXPRESS.RICHEDIT.V19.2.CORE.DLL" Name="DevExpress.RichEdit.v19.2.Core.dll" Source="InstallFiles\AutoCAD Addin\DevExpress.RichEdit.v19.2.Core.dll" />
+                                <File Id="DEVEXPRESS.RICHEDIT.V19.2.CORE.XML" Name="DevExpress.RichEdit.v19.2.Core.xml" Source="InstallFiles\AutoCAD Addin\DevExpress.RichEdit.v19.2.Core.xml" />
+                                <File Id="DEVEXPRESS.SPARKLINE.V19.2.CORE.DLL" Name="DevExpress.Sparkline.v19.2.Core.dll" Source="InstallFiles\AutoCAD Addin\DevExpress.Sparkline.v19.2.Core.dll" />
+                                <File Id="DEVEXPRESS.SPARKLINE.V19.2.CORE.XML" Name="DevExpress.Sparkline.v19.2.Core.xml" Source="InstallFiles\AutoCAD Addin\DevExpress.Sparkline.v19.2.Core.xml" />
+                                <File Id="DEVEXPRESS.UTILS.V19.2.DLL" Name="DevExpress.Utils.v19.2.dll" Source="InstallFiles\AutoCAD Addin\DevExpress.Utils.v19.2.dll" />
+                                <File Id="DEVEXPRESS.UTILS.V19.2.XML" Name="DevExpress.Utils.v19.2.xml" Source="InstallFiles\AutoCAD Addin\DevExpress.Utils.v19.2.xml" />
+                                <File Id="DEVEXPRESS.XTRABARS.V19.2.DLL" Name="DevExpress.XtraBars.v19.2.dll" Source="InstallFiles\AutoCAD Addin\DevExpress.XtraBars.v19.2.dll" />
+                                <File Id="DEVEXPRESS.XTRABARS.V19.2.XML" Name="DevExpress.XtraBars.v19.2.xml" Source="InstallFiles\AutoCAD Addin\DevExpress.XtraBars.v19.2.xml" />
+                                <File Id="DEVEXPRESS.XTRAEDITORS.V19.2.DLL" Name="DevExpress.XtraEditors.v19.2.dll" Source="InstallFiles\AutoCAD Addin\DevExpress.XtraEditors.v19.2.dll" />
+                                <File Id="DEVEXPRESS.XTRAEDITORS.V19.2.XML" Name="DevExpress.XtraEditors.v19.2.xml" Source="InstallFiles\AutoCAD Addin\DevExpress.XtraEditors.v19.2.xml" />
+                                <File Id="DEVEXPRESS.XTRAGRID.V19.2.DLL" Name="DevExpress.XtraGrid.v19.2.dll" Source="InstallFiles\AutoCAD Addin\DevExpress.XtraGrid.v19.2.dll" />
+                                <File Id="DEVEXPRESS.XTRAGRID.V19.2.XML" Name="DevExpress.XtraGrid.v19.2.xml" Source="InstallFiles\AutoCAD Addin\DevExpress.XtraGrid.v19.2.xml" />
+                                <File Id="DEVEXPRESS.XTRALAYOUT.V19.2.DLL" Name="DevExpress.XtraLayout.v19.2.dll" Source="InstallFiles\AutoCAD Addin\DevExpress.XtraLayout.v19.2.dll" />
+                                <File Id="DEVEXPRESS.XTRALAYOUT.V19.2.XML" Name="DevExpress.XtraLayout.v19.2.xml" Source="InstallFiles\AutoCAD Addin\DevExpress.XtraLayout.v19.2.xml" />
+                                <File Id="DEVEXPRESS.XTRAPRINTING.V19.2.DLL" Name="DevExpress.XtraPrinting.v19.2.dll" Source="InstallFiles\AutoCAD Addin\DevExpress.XtraPrinting.v19.2.dll" />
+                                <File Id="DEVEXPRESS.XTRAPRINTING.V19.2.XML" Name="DevExpress.XtraPrinting.v19.2.xml" Source="InstallFiles\AutoCAD Addin\DevExpress.XtraPrinting.v19.2.xml" />
+                                <File Id="DEVEXPRESS.XTRATREELIST.V19.2.DLL" Name="DevExpress.XtraTreeList.v19.2.dll" Source="InstallFiles\AutoCAD Addin\DevExpress.XtraTreeList.v19.2.dll" />
+                                <File Id="DEVEXPRESS.XTRATREELIST.V19.2.XML" Name="DevExpress.XtraTreeList.v19.2.xml" Source="InstallFiles\AutoCAD Addin\DevExpress.XtraTreeList.v19.2.xml" />
+                                <File Id="EXCITECHDOCS.AUTOCAD.ADDIN.DLL" Name="ExcitechDOCS.AutoCAD.Addin.dll" Source="InstallFiles\AutoCAD Addin\ExcitechDOCS.AutoCAD.Addin.dll" />
+                                <File Id="EXCITECHDOCS.AUTOCAD.ADDIN.DLL.CONFIG" Name="ExcitechDOCS.AutoCAD.Addin.dll.config" Source="InstallFiles\AutoCAD Addin\ExcitechDOCS.AutoCAD.Addin.dll.config" />
+                                <File Id="EXCITECHDOCS.AUTOCAD.ADDIN.PDB" Name="ExcitechDOCS.AutoCAD.Addin.pdb" Source="InstallFiles\AutoCAD Addin\ExcitechDOCS.AutoCAD.Addin.pdb" />
+                                <File Id="EXCITECHDOCS.AUTOCAD.ADDIN.XML" Name="ExcitechDOCS.AutoCAD.Addin.xml" Source="InstallFiles\AutoCAD Addin\ExcitechDOCS.AutoCAD.Addin.xml" />
+                                <File Id="EXCITECHDOCS.AUTOCAD.IPLUGIN.DLL" Name="ExcitechDOCS.AutoCAD.IPlugin.dll" Source="InstallFiles\AutoCAD Addin\ExcitechDOCS.AutoCAD.IPlugin.dll" />
+                                <File Id="EXCITECHDOCS.AUTOCAD.IPLUGIN.PDB" Name="ExcitechDOCS.AutoCAD.IPlugin.pdb" Source="InstallFiles\AutoCAD Addin\ExcitechDOCS.AutoCAD.IPlugin.pdb" />
+                                <File Id="EXCITECHDOCS.AUTOCAD.IPLUGIN.XML" Name="ExcitechDOCS.AutoCAD.IPlugin.xml" Source="InstallFiles\AutoCAD Addin\ExcitechDOCS.AutoCAD.IPlugin.xml" />
+                                <File Id="EXCITECHDOCS.AUTOCAD.SETTINGS.DLL" Name="ExcitechDOCS.AutoCAD.Settings.dll" Source="InstallFiles\AutoCAD Addin\ExcitechDOCS.AutoCAD.Settings.dll" />
+                                <File Id="EXCITECHDOCS.AUTOCAD.SETTINGS.XML" Name="ExcitechDOCS.AutoCAD.Settings.xml" Source="InstallFiles\AutoCAD Addin\ExcitechDOCS.AutoCAD.Settings.xml" />
+                                <File Id="EXCITECHDOCS.LICENSEMANAGER.DLL" Name="ExcitechDOCS.LicenseManager.dll" Source="InstallFiles\AutoCAD Addin\ExcitechDOCS.LicenseManager.dll" />
+                                <File Id="EXCITECHDOCS.LICENSEMANAGER.XML" Name="ExcitechDOCS.LicenseManager.xml" Source="InstallFiles\AutoCAD Addin\ExcitechDOCS.LicenseManager.xml" />
+                                <File Id="NEWTONSOFT.JSON.DLL" Name="Newtonsoft.Json.dll" Source="InstallFiles\AutoCAD Addin\Newtonsoft.Json.dll" />
+                                <File Id="NEWTONSOFT.JSON.XML" Name="Newtonsoft.Json.xml" Source="InstallFiles\AutoCAD Addin\Newtonsoft.Json.xml" />
+                            </Component>
+                        </Directory>
+                    </Directory>
+                </Directory>
+            </Directory>
+            <Directory Id="CommonAppDataFolder">
+                <Directory Id="dirExDOCSProgData" Name="Excitech DOCS">
+                    <Directory Id="dirAutoCADData" Name="AutoCAD">
+                        <Directory Id="dirLogsData" Name="Logs" />
+                        <Directory Id="dirACADSettings" Name="Settings" />
+                        <Directory Id="dirACADTemp" Name="Temp" />
+                    </Directory>
+                </Directory>
+            </Directory>
+        </Directory>
+    </Product>
+    <!--<Fragment>
+        <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+            --><!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. --><!--
+            --><!-- <Component Id="ProductComponent"> --><!--
+            --><!-- TODO: Insert files, registry keys, and other resources here. --><!--
+            --><!-- </Component> --><!--
+        </ComponentGroup>
+    </Fragment>-->
+</Wix>
