@@ -66,39 +66,39 @@ Namespace My
             End Set
         End Property
         
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Property TemplateColumnCollection() As Global.ExcitechDOCS.Settings.ColumnCollection
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>
+        Public Property TemplateColumnCollection() As Global.ExcitechDOCS.AutoCAD.Settings.ColumnCollection
             Get
-                Return CType(Me("TemplateColumnCollection"),Global.ExcitechDOCS.Settings.ColumnCollection)
+                Return CType(Me("TemplateColumnCollection"), Global.ExcitechDOCS.AutoCAD.Settings.ColumnCollection)
             End Get
             Set
-                Me("TemplateColumnCollection") = value
+                Me("TemplateColumnCollection") = Value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Property UpdateReferenceWindowPlacement() As Global.ExcitechDOCS.Settings.WindowPlacement
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>
+        Public Property UpdateReferenceWindowPlacement() As Global.ExcitechDOCS.AutoCAD.Settings.WindowPlacement
             Get
-                Return CType(Me("UpdateReferenceWindowPlacement"),Global.ExcitechDOCS.Settings.WindowPlacement)
+                Return CType(Me("UpdateReferenceWindowPlacement"), Global.ExcitechDOCS.AutoCAD.Settings.WindowPlacement)
             End Get
             Set
-                Me("UpdateReferenceWindowPlacement") = value
+                Me("UpdateReferenceWindowPlacement") = Value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Property UpdateReferenceColumnCollection() As Global.ExcitechDOCS.Settings.ColumnCollection
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>
+        Public Property UpdateReferenceColumnCollection() As Global.ExcitechDOCS.AutoCAD.Settings.ColumnCollection
             Get
-                Return CType(Me("UpdateReferenceColumnCollection"),Global.ExcitechDOCS.Settings.ColumnCollection)
+                Return CType(Me("UpdateReferenceColumnCollection"), Global.ExcitechDOCS.AutoCAD.Settings.ColumnCollection)
             End Get
             Set
-                Me("UpdateReferenceColumnCollection") = value
+                Me("UpdateReferenceColumnCollection") = Value
             End Set
         End Property
-        
+
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
@@ -123,14 +123,14 @@ Namespace My
             End Set
         End Property
         
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Property TemplateWindowPlacement() As Global.ExcitechDOCS.Settings.WindowPlacement
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>
+        Public Property TemplateWindowPlacement() As Global.ExcitechDOCS.AutoCAD.Settings.WindowPlacement
             Get
-                Return CType(Me("TemplateWindowPlacement"),Global.ExcitechDOCS.Settings.WindowPlacement)
+                Return CType(Me("TemplateWindowPlacement"), Global.ExcitechDOCS.AutoCAD.Settings.WindowPlacement)
             End Get
             Set
-                Me("TemplateWindowPlacement") = value
+                Me("TemplateWindowPlacement") = Value
             End Set
         End Property
     End Class
