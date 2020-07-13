@@ -33,7 +33,9 @@
     <Content Include="Images\Help.ico" />
     <Content Include="Images\Installer_Background.bmp" />
     <Content Include="Images\Installer_Top_Banner.bmp" />
+    <Content Include="InstallFiles\AutoCAD Addin\placeholder" />
     <Content Include="InstallFiles\license-agreement.rtf" />
+    <Content Include="InstallFiles\Plugin\placeholder" />
   </ItemGroup>
   <ItemGroup>
     <WixExtension Include="WixUtilExtension">
