@@ -19,6 +19,15 @@
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <DefineConstants>Debug</DefineConstants>
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Product.wxs" />
   </ItemGroup>
@@ -26,6 +35,7 @@
     <Folder Include="Images" />
     <Folder Include="InstallFiles" />
     <Folder Include="InstallFiles\AutoCAD Addin" />
+    <Folder Include="InstallFiles\Actions" />
     <Folder Include="InstallFiles\Plugin" />
   </ItemGroup>
   <ItemGroup>
@@ -33,6 +43,7 @@
     <Content Include="Images\Help.ico" />
     <Content Include="Images\Installer_Background.bmp" />
     <Content Include="Images\Installer_Top_Banner.bmp" />
+    <Content Include="InstallFiles\Actions\placeholder" />
     <Content Include="InstallFiles\AutoCAD Addin\placeholder" />
     <Content Include="InstallFiles\license-agreement.rtf" />
     <Content Include="InstallFiles\Plugin\placeholder" />

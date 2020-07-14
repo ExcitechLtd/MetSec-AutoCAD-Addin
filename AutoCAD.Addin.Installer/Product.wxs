@@ -47,7 +47,7 @@
                 </CreateFolder>
             </Component>
         </DirectoryRef>
-        <Binary Id="customAction" SourceFile="..\WIX_CustomAction\bin\$(var.Configuration)\WIX_CustomAction.CA.dll" />
+        <Binary Id="customAction" SourceFile="InstallFiles\Actions\WIX_CustomAction.CA.dll" />
         <CustomAction Id="actionCheckInstalledApplication" BinaryKey="customAction" DllEntry="CheckInstalledApplications" Execute="immediate" Return="check" />
         <CustomAction Id="actionACADProperty" Property="actionAddACADRegistry" Value="AutoCADInstallLocation=[#EXCITECHDOCS.AUTOCAD.ADDIN.DLL]" />
         <CustomAction Id="actionAddACADRegistry" BinaryKey="customAction" DllEntry="AddAutoCADRegistry" Execute="deferred" Impersonate="no" Return="check" />
