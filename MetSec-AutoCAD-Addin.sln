@@ -17,6 +17,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", 
 	EndProjectSection
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "AutoCAD.Addin.Installer.x64", "AutoCAD.Addin.Installer\AutoCAD.Addin.Installer.x64.wixproj", "{740CECCE-98ED-4E0F-94FF-C30CDAAAE85B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{150CC467-504F-4C13-9A01-055E0DF91127} = {150CC467-504F-4C13-9A01-055E0DF91127}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,11 +32,13 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{150CC467-504F-4C13-9A01-055E0DF91127}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{150CC467-504F-4C13-9A01-055E0DF91127}.Debug|x64.ActiveCfg = Debug|x86
+		{150CC467-504F-4C13-9A01-055E0DF91127}.Debug|x64.ActiveCfg = Debug|x64
+		{150CC467-504F-4C13-9A01-055E0DF91127}.Debug|x64.Build.0 = Debug|x64
 		{150CC467-504F-4C13-9A01-055E0DF91127}.Debug|x86.ActiveCfg = Debug|x86
 		{150CC467-504F-4C13-9A01-055E0DF91127}.Debug|x86.Build.0 = Debug|x86
 		{150CC467-504F-4C13-9A01-055E0DF91127}.Release|Any CPU.ActiveCfg = Release|x86
-		{150CC467-504F-4C13-9A01-055E0DF91127}.Release|x64.ActiveCfg = Release|x86
+		{150CC467-504F-4C13-9A01-055E0DF91127}.Release|x64.ActiveCfg = Release|x64
+		{150CC467-504F-4C13-9A01-055E0DF91127}.Release|x64.Build.0 = Release|x64
 		{150CC467-504F-4C13-9A01-055E0DF91127}.Release|x86.ActiveCfg = Release|x86
 		{150CC467-504F-4C13-9A01-055E0DF91127}.Release|x86.Build.0 = Release|x86
 		{B569BC1F-44AF-4262-8F37-598ACE52B937}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
