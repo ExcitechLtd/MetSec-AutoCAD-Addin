@@ -9,8 +9,6 @@ Public Class CustomActions
     <CustomAction()>
     Public Shared Function CheckInstalledApplications(ByVal session As Session) As ActionResult
         session.Log("Begin CheckAutoCADInstall")
-        Debugger.Launch()
-        Debugger.Break()
 
         'AutoCAD
         Dim acadKeys = getACADRegistyKeys()
@@ -21,8 +19,6 @@ Public Class CustomActions
 
     <CustomAction()> Public Shared Function AddAutoCADRegistry(ByVal session As Session) As ActionResult
         session.Log("Begin AddAutoCADRegistry")
-        Debugger.Launch()
-        Debugger.Break()
 
         Dim acadKeys = getACADRegistyKeys()
         For Each acadKey In acadKeys
@@ -34,8 +30,6 @@ Public Class CustomActions
 
     <CustomAction()> Public Shared Function RemoveAutoCADRegistry(ByVal session As Session) As ActionResult
         session.Log("Begin RemoveAutoCADRegistry")
-        Debugger.Launch()
-        Debugger.Break()
 
         Dim acadKeys = getACADRegistyKeys()
         For Each acadKey In acadKeys
@@ -47,8 +41,7 @@ Public Class CustomActions
 
 #Region "AutoCAD Helper Methods"
     Private Shared Function getACADRegistyKeys() As List(Of String)
-        Debugger.Launch()
-        Debugger.Break()
+
         Try
             'get version list from AutoCAD registry root
             Dim regAutoCAD = Registry.LocalMachine.OpenSubKey(autoCADRegRoot)
