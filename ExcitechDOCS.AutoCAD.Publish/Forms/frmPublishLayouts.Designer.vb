@@ -228,7 +228,7 @@ Partial Class frmPublishLayouts
         Me.RibbonPageGroup2.ItemLinks.Add(Me.barchkCloseOnCompletion)
         Me.RibbonPageGroup2.ItemLinks.Add(Me.barchkshowThumbNail)
         Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
-        Me.RibbonPageGroup2.Text = "RibbonPageGroup2"
+        Me.RibbonPageGroup2.Text = "Options"
         '
         'RepositoryItemCheckedComboBoxEdit1
         '

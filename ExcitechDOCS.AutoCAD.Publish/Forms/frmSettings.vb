@@ -53,16 +53,20 @@ Public Class frmSettings
             Dim _i As Integer = MFilesHelper.Templates.FindIndex(Function(dt)
                                                                      Return dt.Location = PluginSettings.DefaultTemplate.Location AndAlso dt.TemplateName = PluginSettings.DefaultTemplate.TemplateName
                                                                  End Function)
-            MFilesHelper.Templates(_i).Default = True
 
-            If MFilesHelper.Templates(_i).Layouts.Contains(PluginSettings.DefaultTemplate.LayoutName) Then
-                MFilesHelper.Templates(_i).LayoutName = PluginSettings.DefaultTemplate.LayoutName
+            If _i > -1 Then
+                MFilesHelper.Templates(_i).Default = True
+
+                If MFilesHelper.Templates(_i).Layouts.Contains(PluginSettings.DefaultTemplate.LayoutName) Then
+                    MFilesHelper.Templates(_i).LayoutName = PluginSettings.DefaultTemplate.LayoutName
+                End If
             End If
+
 
         End If
 
-        ''set the selected class (if any)
-        If Not PluginSettings.DefaultClass = -1 Then
+            ''set the selected class (if any)
+            If Not PluginSettings.DefaultClass = -1 Then
             Dim isSet As Boolean = False
             For Each _class As ObjectClassWrapper In cmbClass.Items
                 If _class.ObjectClass.ID = PluginSettings.DefaultClass Then

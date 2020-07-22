@@ -147,7 +147,6 @@ Public Class frmPublishLayouts
             End If
         Next
 
-
         ''
         Dim publishDelegate As New PublishLayoutDelegate(ViewHelper.Selections)
         Dim publishProgress As New frmPublishProcess(ViewHelper.Selections, AddressOf publishDelegate.PublishLayout)

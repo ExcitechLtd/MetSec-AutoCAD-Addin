@@ -163,7 +163,7 @@ Public Class PublishLayoutDelegate
 
             For Each layerName As String In foundLayouts
                 Dim srcObjID As ObjectId = Nothing
-                If layerName.ToUpperInvariant.EndsWith(My.Settings.ModelLayer.ToLowerInvariant) Then
+                If layerName.ToUpperInvariant.EndsWith(My.Settings.ModelLayer.ToUpperInvariant) Then
                     srcObjID = _layout.ObjectID
                 Else
                     ''look for the non model layer
@@ -206,8 +206,7 @@ Public Class PublishLayoutDelegate
                     End Using
                     ''
                 Catch ex As Exception
-                    Debugger.Launch()
-                    Debugger.Break()
+
                     Throw
                 End Try
             Next
@@ -241,7 +240,7 @@ Public Class PublishLayoutDelegate
                     'get our pLine object extents
                     'Dim srcObjID As ObjectId = Nothing
                     Dim pLineExtents As Extents3d
-                    If layerName.ToUpperInvariant.EndsWith(My.Settings.ModelLayer.ToLowerInvariant) Then
+                    If layerName.ToUpperInvariant.EndsWith(My.Settings.ModelLayer.ToUpperInvariant) Then
                         'srcObjID = _layout.ObjectID
                         pLineExtents = _layout.Extents
                     Else

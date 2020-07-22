@@ -62,6 +62,7 @@ Public Class RibbonCommandHandler
             Dim acDocument As Document = Core.Application.DocumentManager.MdiActiveDocument
 
             Dim frmExportSheetUI As New frmPublishLayouts(vault, acDocument)
+            frmExportSheetUI.StartPosition = FormStartPosition.CenterParent
             frmExportSheetUI.ShowDialog()
 
             'check the value of DBMOD, if 0 then the drawing has not been changed
