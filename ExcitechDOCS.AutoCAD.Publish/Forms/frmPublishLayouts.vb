@@ -86,10 +86,10 @@ Public Class frmPublishLayouts
         End If
     End Sub
 
-    Public Async Sub initTemplates()
+    Public Sub initTemplates()
         ''run this in the background
-        Await Task.Run(Sub() MFilesHelper.populateDrawingTemplates(PluginSettings.LocalTemplatePath, PluginSettings.CheckDOCSForTemplates))
-
+        'Await Task.Run(Sub() MFilesHelper.populateDrawingTemplates(PluginSettings.LocalTemplatePath, PluginSettings.CheckDOCSForTemplates))
+        MFilesHelper.populateDrawingTemplates(PluginSettings.LocalTemplatePath, PluginSettings.CheckDOCSForTemplates)
     End Sub
 
     Private Sub BarButtonItem2_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnPublisj.ItemClick
