@@ -38,7 +38,6 @@ Partial Class frmSetItemProperties
         Me.btnSave = New System.Windows.Forms.Button()
         Me.chkDWG = New System.Windows.Forms.CheckBox()
         Me.chkPDF = New System.Windows.Forms.CheckBox()
-        Me.btnLoadDefaults = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -181,21 +180,11 @@ Partial Class frmSetItemProperties
         Me.chkPDF.Text = "Publish PDF"
         Me.chkPDF.UseVisualStyleBackColor = True
         '
-        'btnLoadDefaults
-        '
-        Me.btnLoadDefaults.Location = New System.Drawing.Point(636, 444)
-        Me.btnLoadDefaults.Name = "btnLoadDefaults"
-        Me.btnLoadDefaults.Size = New System.Drawing.Size(152, 23)
-        Me.btnLoadDefaults.TabIndex = 10
-        Me.btnLoadDefaults.Text = "Load default property values"
-        Me.btnLoadDefaults.UseVisualStyleBackColor = True
-        '
         'frmSetItemProperties
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 536)
-        Me.Controls.Add(Me.btnLoadDefaults)
         Me.Controls.Add(Me.chkPDF)
         Me.Controls.Add(Me.chkDWG)
         Me.Controls.Add(Me.Panel1)
@@ -207,7 +196,7 @@ Partial Class frmSetItemProperties
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.lvItemProps)
         Me.Name = "frmSetItemProperties"
-        Me.Text = "frmSetItemProperties"
+        Me.Text = "Set item properties"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
@@ -229,6 +218,5 @@ Partial Class frmSetItemProperties
     Friend WithEvents colPropValue As Windows.Forms.ColumnHeader
     Friend WithEvents chkDWG As Windows.Forms.CheckBox
     Friend WithEvents chkPDF As Windows.Forms.CheckBox
-    Friend WithEvents btnLoadDefaults As Windows.Forms.Button
     Friend WithEvents colOverride As Windows.Forms.ColumnHeader
 End Class
