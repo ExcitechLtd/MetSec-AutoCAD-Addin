@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmPublishLayouts
     Inherits DevExpress.XtraEditors.XtraForm
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -17,7 +17,7 @@ Partial Class frmPublishLayouts
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim GridFormatRule1 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
@@ -38,9 +38,13 @@ Partial Class frmPublishLayouts
         Me.barchkCloseOnCompletion = New DevExpress.XtraBars.BarCheckItem()
         Me.BarStaticItem1 = New DevExpress.XtraBars.BarStaticItem()
         Me.barchkshowThumbNail = New DevExpress.XtraBars.BarCheckItem()
+        Me.BarEditItem1 = New DevExpress.XtraBars.BarEditItem()
+        Me.RepositoryItemCheckedComboBoxEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit()
+        Me.btnEdit = New DevExpress.XtraBars.BarButtonItem()
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup3 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RepositoryItemCheckedComboBoxEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.AdvBandedGridView1 = New DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView()
@@ -66,6 +70,7 @@ Partial Class frmPublishLayouts
         Me.pbThumb = New DevExpress.XtraEditors.PictureEdit()
         CType(Me.RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ribbonMain, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemCheckedComboBoxEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemCheckedComboBoxEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AdvBandedGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -127,12 +132,12 @@ Partial Class frmPublishLayouts
         '
         Me.ribbonMain.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Blue
         Me.ribbonMain.ExpandCollapseItem.Id = 0
-        Me.ribbonMain.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.ribbonMain.ExpandCollapseItem, Me.ribbonMain.SearchEditItem, Me.btnSearch, Me.btnSettings, Me.btnPublisj, Me.btnDebug, Me.btnViewInDOCS, Me.barchkCloseOnCompletion, Me.BarStaticItem1, Me.barchkshowThumbNail})
+        Me.ribbonMain.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.ribbonMain.ExpandCollapseItem, Me.ribbonMain.SearchEditItem, Me.btnSearch, Me.btnSettings, Me.btnPublisj, Me.btnDebug, Me.btnViewInDOCS, Me.barchkCloseOnCompletion, Me.BarStaticItem1, Me.barchkshowThumbNail, Me.BarEditItem1, Me.btnEdit})
         Me.ribbonMain.Location = New System.Drawing.Point(0, 0)
-        Me.ribbonMain.MaxItemId = 17
+        Me.ribbonMain.MaxItemId = 20
         Me.ribbonMain.Name = "ribbonMain"
         Me.ribbonMain.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
-        Me.ribbonMain.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckedComboBoxEdit1})
+        Me.ribbonMain.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckedComboBoxEdit1, Me.RepositoryItemCheckedComboBoxEdit2})
         Me.ribbonMain.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010
         Me.ribbonMain.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.[False]
         Me.ribbonMain.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.[False]
@@ -206,9 +211,32 @@ Partial Class frmPublishLayouts
         Me.barchkshowThumbNail.Id = 16
         Me.barchkshowThumbNail.Name = "barchkshowThumbNail"
         '
+        'BarEditItem1
+        '
+        Me.BarEditItem1.Edit = Me.RepositoryItemCheckedComboBoxEdit2
+        Me.BarEditItem1.EditWidth = 150
+        Me.BarEditItem1.Id = 17
+        Me.BarEditItem1.Name = "BarEditItem1"
+        Me.BarEditItem1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
+        'RepositoryItemCheckedComboBoxEdit2
+        '
+        Me.RepositoryItemCheckedComboBoxEdit2.AutoHeight = False
+        Me.RepositoryItemCheckedComboBoxEdit2.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryItemCheckedComboBoxEdit2.Items.AddRange(New DevExpress.XtraEditors.Controls.CheckedListBoxItem() {New DevExpress.XtraEditors.Controls.CheckedListBoxItem("asdfasdfasdf", System.Windows.Forms.CheckState.Checked), New DevExpress.XtraEditors.Controls.CheckedListBoxItem("asdf asdf asdf "), New DevExpress.XtraEditors.Controls.CheckedListBoxItem("asdf"), New DevExpress.XtraEditors.Controls.CheckedListBoxItem("def t", System.Windows.Forms.CheckState.Checked), New DevExpress.XtraEditors.Controls.CheckedListBoxItem("rtgfbg d")})
+        Me.RepositoryItemCheckedComboBoxEdit2.Name = "RepositoryItemCheckedComboBoxEdit2"
+        '
+        'btnEdit
+        '
+        Me.btnEdit.Caption = "Edit item properties"
+        Me.btnEdit.Id = 19
+        Me.btnEdit.ImageOptions.Image = Global.ExcitechDOCS.AutoCAD.Publish.My.Resources.Resources.edit_table_40
+        Me.btnEdit.Name = "btnEdit"
+        Me.btnEdit.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
         'RibbonPage1
         '
-        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1, Me.RibbonPageGroup2})
+        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1, Me.RibbonPageGroup2, Me.RibbonPageGroup3})
         Me.RibbonPage1.Name = "RibbonPage1"
         Me.RibbonPage1.Text = "RibbonPage1"
         '
@@ -219,6 +247,7 @@ Partial Class frmPublishLayouts
         Me.RibbonPageGroup1.ItemLinks.Add(Me.btnViewInDOCS)
         Me.RibbonPageGroup1.ItemLinks.Add(Me.btnPublisj)
         Me.RibbonPageGroup1.ItemLinks.Add(Me.btnSettings)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.btnEdit)
         Me.RibbonPageGroup1.ItemLinks.Add(Me.btnDebug)
         Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
         Me.RibbonPageGroup1.Text = "Process document"
@@ -229,6 +258,14 @@ Partial Class frmPublishLayouts
         Me.RibbonPageGroup2.ItemLinks.Add(Me.barchkshowThumbNail)
         Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
         Me.RibbonPageGroup2.Text = "Options"
+        '
+        'RibbonPageGroup3
+        '
+        Me.RibbonPageGroup3.AllowTextClipping = False
+        Me.RibbonPageGroup3.ItemLinks.Add(Me.BarEditItem1)
+        Me.RibbonPageGroup3.ItemsLayout = DevExpress.XtraBars.Ribbon.RibbonPageGroupItemsLayout.TwoRows
+        Me.RibbonPageGroup3.Name = "RibbonPageGroup3"
+        Me.RibbonPageGroup3.Text = "Class property columns"
         '
         'RepositoryItemCheckedComboBoxEdit1
         '
@@ -264,6 +301,7 @@ Partial Class frmPublishLayouts
         Me.AdvBandedGridView1.Bands.AddRange(New DevExpress.XtraGrid.Views.BandedGrid.GridBand() {Me.GridBand1, Me.bandPublishFormats, Me.gridBand2, Me.gridBand3})
         Me.AdvBandedGridView1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple
         Me.AdvBandedGridView1.Columns.AddRange(New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn() {Me.colThumbNail, Me.colTemplate, Me.colLayout, Me.colLayoutName, Me.colStatus, Me.colDWG, Me.colPDF, Me.colVersion, Me.colPublishStatus})
+        Me.AdvBandedGridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
         GridFormatRule1.ApplyToRow = True
         GridFormatRule1.Name = "formatDisabledRow"
         FormatConditionRuleExpression1.Appearance.ForeColor = System.Drawing.Color.Silver
@@ -285,6 +323,7 @@ Partial Class frmPublishLayouts
         Me.AdvBandedGridView1.OptionsCustomization.AllowGroup = False
         Me.AdvBandedGridView1.OptionsSelection.EnableAppearanceFocusedCell = False
         Me.AdvBandedGridView1.OptionsView.ShowBands = False
+        Me.AdvBandedGridView1.OptionsView.ShowDetailButtons = False
         Me.AdvBandedGridView1.OptionsView.ShowGroupPanel = False
         Me.AdvBandedGridView1.OptionsView.ShowIndicator = False
         Me.AdvBandedGridView1.RowHeight = 45
@@ -400,8 +439,11 @@ Partial Class frmPublishLayouts
         '
         'RepositoryItemCheckEdit1
         '
+        Me.RepositoryItemCheckEdit1.Appearance.Options.UseTextOptions = True
+        Me.RepositoryItemCheckEdit1.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap
         Me.RepositoryItemCheckEdit1.AutoHeight = False
         Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
+        Me.RepositoryItemCheckEdit1.NullText = "qwertyuiop"
         '
         'colPDF
         '
@@ -511,6 +553,7 @@ Partial Class frmPublishLayouts
         Me.Text = "Publish Layouts to Excitech DOCS"
         CType(Me.RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ribbonMain, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemCheckedComboBoxEdit2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemCheckedComboBoxEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AdvBandedGridView1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -566,4 +609,8 @@ Partial Class frmPublishLayouts
     Friend WithEvents bandPublishFormats As DevExpress.XtraGrid.Views.BandedGrid.GridBand
     Friend WithEvents gridBand2 As DevExpress.XtraGrid.Views.BandedGrid.GridBand
     Friend WithEvents gridBand3 As DevExpress.XtraGrid.Views.BandedGrid.GridBand
+    Friend WithEvents BarEditItem1 As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents RepositoryItemCheckedComboBoxEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit
+    Friend WithEvents RibbonPageGroup3 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents btnEdit As DevExpress.XtraBars.BarButtonItem
 End Class

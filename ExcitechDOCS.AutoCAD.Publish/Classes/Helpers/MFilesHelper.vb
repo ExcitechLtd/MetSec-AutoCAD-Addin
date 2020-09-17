@@ -3,13 +3,20 @@
 Public Class MFilesHelper
     Public Shared Vault As Vault
     Public Shared Templates As List(Of DrawingTemplate)
+    Public Shared ClassProperties As List(Of PropertyWrapper)
+    Public Shared ObjectClassWrapper As ObjectClassWrapper
+
+    Public Shared Function GetObjectClassWrapper(ClassID As Integer) As ObjectClassWrapper
+        ObjectClassWrapper = New ObjectClassWrapper(Vault, ClassID)
+        Return ObjectClassWrapper
+    End Function
 
     Public Shared Sub populateDrawingTemplates(localPath As String, includeMFiles As Boolean)
         LoggingHelper.WriteToLog("Initalise templates...")
 
         Templates = New List(Of DrawingTemplate)
 
-        If Not String.IsNullOrWhiteSpace(localPath) Then
+        If Not String.IsNullOrWhiteSpace(localPath) AndAlso IO.Directory.Exists(localPath) Then
             LoggingHelper.WriteToLog("Checking for local templates...")
             ''see if we have any DWT files
             Dim dInfo As New IO.DirectoryInfo(localPath)
@@ -142,7 +149,7 @@ Public Class MFilesHelper
 
     Public Shared Function GetClassProperties(objClassWrap As ObjectClassWrapper) As List(Of PropertyWrapper)
         Dim objClass = objClassWrap.ObjectClass
-        Dim props As New List(Of PropertyWrapper)
+        ClassProperties = New List(Of PropertyWrapper)
 
         'owner object if applicable
         If objClassWrap.ObjecType.OwnerType <> 0 Then
@@ -150,10 +157,10 @@ Public Class MFilesHelper
             Dim propID = ownerObjType.OwnerPropertyDef
 
             Dim mapping As New PropertyWrapper(propID, True)
-            If Not props.FindIndex(Function(p)
-                                       Return p.PropertyID = propID
-                                   End Function) > -1 Then
-                props.Add(mapping)
+            If Not ClassProperties.FindIndex(Function(p)
+                                                 Return p.PropertyID = propID
+                                             End Function) > -1 Then
+                ClassProperties.Add(mapping)
             End If
 
         End If
@@ -180,12 +187,12 @@ Public Class MFilesHelper
             Dim mapping = New PropertyWrapper(propID, associatedPropDef.Required)
             If propertyDef.ID = objClass.NamePropertyDef Then mapping.UseDocumentName = True
 
-            props.Add(mapping)
+            ClassProperties.Add(mapping)
             'If m_importMappings.ContainsKey(propID) Then mapping = m_importMappings(propID).Clone
             'Dim lstItem = lvPropertyMappings.Items.Add(mapping.PropertyDescription(Vault))
             'refreshListItem(m_vault, mapping, lstItem)
         Next
-        Return props
+        Return ClassProperties
     End Function
 
     Public Shared Function AddNewObject(classID As Integer, filename As List(Of String), SheetUniqueID As String, layout As ViewArea) As Boolean
@@ -209,15 +216,15 @@ Public Class MFilesHelper
         Else
 
         End If
-            'If Not m_calculatedValues.ContainsKey(objClass.NamePropertyDef) Then
-            '    propertyValue = New PropertyValue
-            '    propertyValue.PropertyDef = objClass.NamePropertyDef
-            '    propertyValue.Value.SetValue(MFDataType.MFDatatypeText, "Temporary Filename")
-            '    properties.Add(-1, propertyValue)
-            'End If
 
+        ''add the defaults to the collection of custom items unless the item is already in the list
+        For Each propWrap In PluginSettings.DefaultClassProperties
+            Dim pIndex As Integer = layout.CustomObjectProperties.FindIndex(Function(p) p.PropertyID = propWrap.PropertyID)
 
-            For Each propWrap In PluginSettings.DefaultClassProperties
+            If Not pIndex > -1 Then layout.CustomObjectProperties.Add(propWrap)
+        Next
+
+        For Each propWrap In layout.CustomObjectProperties
             Dim dType = propWrap.MFilesPropertyDef(Vault).DataType
             Select Case dType
                 Case MFDataType.MFDatatypeLookup, MFDataType.MFDatatypeMultiSelectLookup
@@ -241,6 +248,31 @@ Public Class MFilesHelper
 
             End Select
         Next
+
+        'For Each propWrap In PluginSettings.DefaultClassProperties
+        '    Dim dType = propWrap.MFilesPropertyDef(Vault).DataType
+        '    Select Case dType
+        '        Case MFDataType.MFDatatypeLookup, MFDataType.MFDatatypeMultiSelectLookup
+        '            If propWrap.Value Is DBNull.Value Then Continue For
+
+        '            ''resolve the 
+        '            resolveLookupValue(propWrap.MFilesPropertyDef(Vault), propWrap)
+        '            propertyValue = New PropertyValue
+        '            propertyValue.PropertyDef = propWrap.PropertyID
+        '            propertyValue.Value.SetValue(dType, propWrap.ValueID)
+        '            properties.Add(-1, propertyValue)
+        '        Case Else
+
+        '            If propWrap.UseDocumentName Then
+        '                propWrap.Value = layout.DocumentName
+        '            End If
+        '            propertyValue = New PropertyValue
+        '            propertyValue.PropertyDef = propWrap.PropertyID
+        '            propertyValue.Value.SetValue(dType, propWrap.Value)
+        '            properties.Add(-1, propertyValue)
+
+        '    End Select
+        'Next
 
         'ExDOCS.Property.RvtSheetID
         ''get property from alias

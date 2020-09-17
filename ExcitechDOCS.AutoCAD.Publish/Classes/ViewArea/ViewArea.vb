@@ -173,6 +173,8 @@ Public Class ViewArea
     Public Property Disabled As Boolean
 
     Public Property ErrorMessage As String
+
+    Public Property CustomObjectProperties As List(Of PropertyWrapper)
 #End Region
 
 #Region " State and Status "
@@ -190,6 +192,8 @@ Public Class ViewArea
         ExportPDF = New exportFiles With {.Export = False}
         DrawingTemplate = New DrawingTemplate
         Disabled = False
+
+        CustomObjectProperties = New List(Of PropertyWrapper)
     End Sub
 #End Region
 

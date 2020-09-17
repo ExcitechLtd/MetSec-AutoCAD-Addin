@@ -12,12 +12,16 @@ Imports System.Windows.Forms
 Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
 Imports DevExpress.Utils
 Imports DevExpress.Data
+Imports DevExpress.XtraGrid
+Imports System.Drawing
+Imports DevExpress.XtraBars
 
 Public Class frmPublishLayouts
 
 #Region " Private "
     Private _vault As Vault
     Private _document As Document
+    Private _editor As BaseEdit
 #End Region
 
 #Region " Constrcutor "
@@ -41,10 +45,12 @@ Public Class frmPublishLayouts
 
 #Region " Methods "
 
-    Private Sub frmPublishLayouts_Load(sender As Object, e As EventArgs) Handles Me.Load
+    Private Sub frmPublishLayouts_LoadAsync(sender As Object, e As EventArgs) Handles Me.Load
         initTemplates()
         UpdateStatusBar()
         UpdateRibbon()
+        UpdateClassProperties()
+
     End Sub
 
     Private Sub btnSearch_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnSearch.ItemClick
@@ -177,6 +183,8 @@ Public Class frmPublishLayouts
 
         btnViewInDOCS.Enabled = va IsNot Nothing AndAlso va.IsInMFiles
         btnPublisj.Enabled = va IsNot Nothing AndAlso ViewHelper.CanPublish
+
+        btnEdit.Enabled = selectedCount > 0
     End Sub
 
     Private Sub UpdateStatusBar()
@@ -193,23 +201,50 @@ Public Class frmPublishLayouts
         If layout Is Nothing Then Exit Sub
         pbThumb.Image = layout.LargeThumbnail
     End Sub
+
+    Private Async Sub UpdateClassProperties()
+        RepositoryItemCheckedComboBoxEdit2.Items.Clear()
+
+        If PluginSettings.DefaultClass < 0 Then Exit Sub
+
+        'Await Task.Run(Sub()
+        'Dim objClass As New ObjectClassWrapper(MFilesHelper.Vault, PluginSettings.DefaultClass)
+        Dim objClass = MFilesHelper.GetObjectClassWrapper(PluginSettings.DefaultClass)
+        Dim properties = MFilesHelper.GetClassProperties(objClass)
+
+        'For Each _propWrap As PropertyWrapper In _properties
+        'For Each prop As PropertyWrapper In properties
+        '    Dim pName As String = prop.PropertyDescription(MFilesHelper.Vault)
+        '    Dim chkItem As Boolean = prop.RequiredProperty
+        '    RepositoryItemCheckedComboBoxEdit2.Items.Add(pName, chkItem)
+
+        'Next
+
+        'BarEditItem1.EditValue = RepositoryItemCheckedComboBoxEdit2.GetCheckedItems
+
+        '               End Sub)
+
+        ''add any property columns
+
+
+    End Sub
 #End Region
 
 #Region " Grid View Editor "
     Private Sub advancedBandedView_MouseDown(sender As Object, e As MouseEventArgs) Handles AdvBandedGridView1.MouseDown
         UpdateRibbon()
 
-        If InSelectedCell(e) Then
-            Dim hi As GridHitInfo = AdvBandedGridView1.CalcHitInfo(e.Location)
-            ''
-            'Dim viewArea As ViewArea = AdvBandedGridView1.GetFocusedRow
-            'ShowLargeThumbnail(viewArea)
+        'If InSelectedCell(e) Then
+        '    Dim hi As GridHitInfo = AdvBandedGridView1.CalcHitInfo(e.Location)
+        '    ''
+        '    'Dim viewArea As ViewArea = AdvBandedGridView1.GetFocusedRow
+        '    'ShowLargeThumbnail(viewArea)
 
-            If AdvBandedGridView1.FocusedRowHandle = hi.RowHandle Then
-                AdvBandedGridView1.FocusedColumn = hi.Column
-                DXMouseEventArgs.GetMouseArgs(e).Handled = True
-            End If
-        End If
+        '    If AdvBandedGridView1.FocusedRowHandle = hi.RowHandle Then
+        '        AdvBandedGridView1.FocusedColumn = hi.Column
+        '        DXMouseEventArgs.GetMouseArgs(e).Handled = True
+        '    End If
+        'End If
     End Sub
 
     Private Sub advancedBandedView_MouseUp(sender As Object, e As MouseEventArgs) Handles AdvBandedGridView1.MouseUp
@@ -370,11 +405,6 @@ Public Class frmPublishLayouts
 
     End Sub
 
-    Private Sub BarButtonItem1_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs)
-
-
-    End Sub
-
     Private Sub AdvBandedGridView1_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles AdvBandedGridView1.SelectionChanged
         UpdateRibbon()
     End Sub
@@ -392,6 +422,7 @@ Public Class frmPublishLayouts
                     Dim frmErrorDetailsUI As New frmErrorDetails(sheet.ErrorMessage)
                     frmErrorDetailsUI.StartPosition = FormStartPosition.CenterParent
                     frmErrorDetailsUI.ShowDialog(Me)
+                    Exit Sub
                 End If
             End If
 
@@ -417,6 +448,35 @@ Public Class frmPublishLayouts
         If Not va.LayerIsModel Then
             e.Visible = False
             e.Handled = True
+        End If
+    End Sub
+
+    Private Sub btnEdit_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnEdit.ItemClick
+        Dim viewArea As ViewArea = AdvBandedGridView1.GetFocusedRow
+        Dim rowHandle As Integer = AdvBandedGridView1.FocusedRowHandle
+        Dim frmEdit As New frmSetItemProperties
+        frmEdit.viewArea = viewArea
+
+        frmEdit.StartPosition = FormStartPosition.CenterParent
+        If frmEdit.ShowDialog() = DialogResult.OK Then
+            viewArea.ExportDWG.Export = frmEdit.chkDWG.Checked
+            viewArea.ExportPDF.Export = frmEdit.chkPDF.Checked
+
+            viewArea.Template = frmEdit.cbTemplate.SelectedValue
+            viewArea.LayoutName = frmEdit.cbLayout.SelectedItem
+
+            AdvBandedGridView1.RefreshData() ''tell the grid the datasource has updated
+            AdvBandedGridView1.RefreshRow(rowHandle) ''if we dont do this the checkboxes dont reflect any changes
+
+            ''add any overriden properties to the viewarea
+            viewArea.CustomObjectProperties.Clear()
+
+            For Each lvItem As ListViewItem In frmEdit.lvItemProps.Items
+                If Not lvItem.Checked Then Continue For
+                viewArea.CustomObjectProperties.Add(lvItem.Tag)
+
+            Next
+
         End If
     End Sub
 
