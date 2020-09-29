@@ -182,7 +182,6 @@ Partial Class frmPublishLayouts
         Me.btnDebug.Id = 5
         Me.btnDebug.Name = "btnDebug"
         Me.btnDebug.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
-        Me.btnDebug.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'btnViewInDOCS
         '

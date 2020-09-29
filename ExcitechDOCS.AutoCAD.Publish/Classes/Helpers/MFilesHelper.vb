@@ -221,7 +221,9 @@ Public Class MFilesHelper
         For Each propWrap In PluginSettings.DefaultClassProperties
             Dim pIndex As Integer = layout.CustomObjectProperties.FindIndex(Function(p) p.PropertyID = propWrap.PropertyID)
 
-            If Not pIndex > -1 Then layout.CustomObjectProperties.Add(propWrap)
+            If Not pIndex > -1 Then
+                If Not propWrap.Value Is Nothing Then layout.CustomObjectProperties.Add(propWrap)
+            End If
         Next
 
         For Each propWrap In layout.CustomObjectProperties
@@ -306,7 +308,7 @@ Public Class MFilesHelper
         'End If
 
         'update all properties
-        Vault.ObjectPropertyOperations.SetAllProperties(objVerProps.ObjVer, True, objVerProps.Properties)
+        'Vault.ObjectPropertyOperations.SetAllProperties(objVerProps.ObjVer, True, objVerProps.Properties)
 
         'check in?
         Vault.ObjectOperations.CheckIn(objVerProps.ObjVer)

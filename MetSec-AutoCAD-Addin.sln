@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", 
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "AutoCAD.Addin.Installer.x64", "AutoCAD.Addin.Installer\AutoCAD.Addin.Installer.x64.wixproj", "{740CECCE-98ED-4E0F-94FF-C30CDAAAE85B}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Tester", "Tester\Tester.vbproj", "{3738D070-0147-40AE-9350-EBBCA8B05C57}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -82,6 +84,18 @@ Global
 		{740CECCE-98ED-4E0F-94FF-C30CDAAAE85B}.Release|x64.ActiveCfg = Release|x64
 		{740CECCE-98ED-4E0F-94FF-C30CDAAAE85B}.Release|x86.ActiveCfg = Release|x86
 		{740CECCE-98ED-4E0F-94FF-C30CDAAAE85B}.Release|x86.Build.0 = Release|x86
+		{3738D070-0147-40AE-9350-EBBCA8B05C57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3738D070-0147-40AE-9350-EBBCA8B05C57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3738D070-0147-40AE-9350-EBBCA8B05C57}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3738D070-0147-40AE-9350-EBBCA8B05C57}.Debug|x64.Build.0 = Debug|Any CPU
+		{3738D070-0147-40AE-9350-EBBCA8B05C57}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3738D070-0147-40AE-9350-EBBCA8B05C57}.Debug|x86.Build.0 = Debug|Any CPU
+		{3738D070-0147-40AE-9350-EBBCA8B05C57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3738D070-0147-40AE-9350-EBBCA8B05C57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3738D070-0147-40AE-9350-EBBCA8B05C57}.Release|x64.ActiveCfg = Release|Any CPU
+		{3738D070-0147-40AE-9350-EBBCA8B05C57}.Release|x64.Build.0 = Release|Any CPU
+		{3738D070-0147-40AE-9350-EBBCA8B05C57}.Release|x86.ActiveCfg = Release|Any CPU
+		{3738D070-0147-40AE-9350-EBBCA8B05C57}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

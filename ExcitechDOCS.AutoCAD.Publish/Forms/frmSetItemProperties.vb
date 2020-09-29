@@ -148,7 +148,7 @@ Public Class frmSetItemProperties
             mapping.Value = frmAddTextUI.getTextValue
             mapping.UseDocumentName = mapping.PropertyID = classWrap.ObjectClass.NamePropertyDef
 
-            lstItem.SubItems(2).Text = mapping.ValueDescription(MFilesHelper.Vault)
+            lstItem.SubItems(3).Text = mapping.ValueDescription(MFilesHelper.Vault)
             lstItem.Tag = mapping
         End If
     End Sub
@@ -170,7 +170,7 @@ Public Class frmSetItemProperties
                 mapping.Value = frmValueConfigUI.ValueDisplay
                 mapping.ValueID = frmValueConfigUI.ValueID
 
-                lstItem.SubItems(2).Text = mapping.ValueDescription(MFilesHelper.Vault)
+                lstItem.SubItems(3).Text = mapping.ValueDescription(MFilesHelper.Vault)
                 lstItem.Tag = mapping
             End If
         Catch ex As Exception

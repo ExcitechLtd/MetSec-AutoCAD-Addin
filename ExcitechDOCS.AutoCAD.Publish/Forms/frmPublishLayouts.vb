@@ -123,7 +123,8 @@ Public Class frmPublishLayouts
         For vi As Integer = 0 To ViewHelper.Selections.Count - 1
             Dim va As ViewArea = ViewHelper.Selections(vi)
 
-            If Not va.ExportDWG.Export OrElse Not va.ExportPDF.Export Then Continue For
+            'If Not va.ExportDWG.Export OrElse Not va.ExportPDF.Export Then Continue For
+            If Not va.ExportDWG.Export And Not va.ExportPDF.Export Then Continue For
 
             Dim i As Integer = MFilesHelper.Templates.FindIndex(Function(t)
                                                                     Return t.TemplateName = va.Template

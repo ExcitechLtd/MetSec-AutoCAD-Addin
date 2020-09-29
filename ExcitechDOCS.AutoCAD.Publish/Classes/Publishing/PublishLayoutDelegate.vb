@@ -114,6 +114,8 @@ Public Class PublishLayoutDelegate
     Private Sub ProcessExports()
         Dim workingDB As Database = Nothing
 
+
+
         Try
             _templateFilename = GetTemplate()
             ''get the layouts from the current drawing
