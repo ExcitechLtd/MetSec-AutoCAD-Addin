@@ -165,7 +165,6 @@ Public Class MFilesHelper
 
         End If
 
-        ''is this name of title?
 
         'class property definitions
         For Each associatedPropDef As AssociatedPropertyDef In objClass.AssociatedPropertyDefs
@@ -180,8 +179,8 @@ Public Class MFilesHelper
                propertyDef.AutomaticValueType = MFAutomaticValueType.MFAutomaticValueTypeCalculatedWithVBScript Then Continue For
 
             'ignore Automatic Values, if Automatic Values enabled
-            'If (propertyDef.AutomaticValueType = MFAutomaticValueType.MFAutomaticValueTypeAutoNumberSimple Or
-            '    propertyDef.AutomaticValueType = MFAutomaticValueType.MFAutomaticValueTypeWithVBScript) Then Continue For
+            If (propertyDef.AutomaticValueType = MFAutomaticValueType.MFAutomaticValueTypeAutoNumberSimple Or
+                propertyDef.AutomaticValueType = MFAutomaticValueType.MFAutomaticValueTypeWithVBScript) Then Continue For
 
             'add property to listview
             Dim mapping = New PropertyWrapper(propID, associatedPropDef.Required)
@@ -214,7 +213,14 @@ Public Class MFilesHelper
             propertyValue.Value.SetValue(MFDataType.MFDatatypeText, "Temporary Filename")
             properties.Add(-1, propertyValue)
         Else
+            'Dim p = PluginSettings.DefaultClassProperties(namePropIndex)
 
+            'If p.UseDocumentName Then p.Value = layout.DocumentName
+
+            'propertyValue = New PropertyValue
+            'propertyValue.PropertyDef = objClass.NamePropertyDef
+            'propertyValue.Value.SetValue(MFDataType.MFDatatypeText, p.Value)
+            'properties.Add(-1, propertyValue)
         End If
 
         ''add the defaults to the collection of custom items unless the item is already in the list
@@ -227,10 +233,12 @@ Public Class MFilesHelper
         Next
 
         For Each propWrap In layout.CustomObjectProperties
+            If propWrap.Value Is DBNull.Value Then Continue For
+            If propWrap.Value Is Nothing Then Continue For
+
             Dim dType = propWrap.MFilesPropertyDef(Vault).DataType
             Select Case dType
                 Case MFDataType.MFDatatypeLookup, MFDataType.MFDatatypeMultiSelectLookup
-                    If propWrap.Value Is DBNull.Value Then Continue For
 
                     ''resolve the 
                     resolveLookupValue(propWrap.MFilesPropertyDef(Vault), propWrap)
@@ -543,7 +551,7 @@ Public Class MFilesHelper
                 Dim objId As New ObjID
                 objId.SetIDs(ObjType.ID, valueListItem.ID)
 
-                Debug.Print(valueListItem.ID.ToString + " - " + valueListItem.Name)
+                'Debug.Print(valueListItem.ID.ToString + " - " + valueListItem.Name)
 
                 'load properties
                 If calculatedValue.ValueID > -1 Then

@@ -453,6 +453,7 @@ Public Class frmPublishLayouts
     End Sub
 
     Private Sub btnEdit_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnEdit.ItemClick
+
         Dim viewArea As ViewArea = AdvBandedGridView1.GetFocusedRow
         Dim rowHandle As Integer = AdvBandedGridView1.FocusedRowHandle
         Dim frmEdit As New frmSetItemProperties

@@ -182,6 +182,7 @@ Partial Class frmPublishLayouts
         Me.btnDebug.Id = 5
         Me.btnDebug.Name = "btnDebug"
         Me.btnDebug.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        Me.btnDebug.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'btnViewInDOCS
         '
@@ -265,6 +266,7 @@ Partial Class frmPublishLayouts
         Me.RibbonPageGroup3.ItemsLayout = DevExpress.XtraBars.Ribbon.RibbonPageGroupItemsLayout.TwoRows
         Me.RibbonPageGroup3.Name = "RibbonPageGroup3"
         Me.RibbonPageGroup3.Text = "Class property columns"
+        Me.RibbonPageGroup3.Visible = False
         '
         'RepositoryItemCheckedComboBoxEdit1
         '

@@ -78,6 +78,9 @@ Public Class frmSettings
 
             If isSet Then
                 For Each propWrap As PropertyWrapper In PluginSettings.DefaultClassProperties
+                    Dim pValue = propWrap.PropertyDescription(MFilesHelper.Vault)
+                    If pValue Is Nothing Then Continue For
+
                     Dim item As ListViewItem = lvProperties.FindItemWithText(propWrap.PropertyDescription(MFilesHelper.Vault))
                     If Not item Is Nothing Then
                         item.SubItems(2).Text = propWrap.Value

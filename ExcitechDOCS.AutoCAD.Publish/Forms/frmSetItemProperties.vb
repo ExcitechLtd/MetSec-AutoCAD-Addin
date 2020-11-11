@@ -20,12 +20,13 @@ Public Class frmSetItemProperties
 
 #Region " Form Methods "
     Private Sub frmSetItemProperties_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+
         PictureBox1.Image = viewArea.SmallThumbnail
 
         cbTemplate.Items.Clear()
         cbTemplate.DataSource = MFilesHelper.Templates
-        cbTemplate.DisplayMember = "Filename"
-        cbTemplate.ValueMember = "Filename"
+        cbTemplate.DisplayMember = "TemplateName"
+        cbTemplate.ValueMember = "TemplateName"
 
         Dim index As Integer = cbTemplate.FindString(viewArea.Template)
         If index = -1 Then Exit Sub
@@ -65,7 +66,14 @@ Public Class frmSetItemProperties
                 pIndex = PluginSettings.DefaultClassProperties.FindIndex(Function(p)
                                                                              Return p.PropertyID = _propWrap.PropertyID
                                                                          End Function)
-                If Not pIndex = -1 Then lstitem.SubItems(3).Text = PluginSettings.DefaultClassProperties(pIndex).Value
+                If Not pIndex = -1 Then
+                    lstitem.SubItems(3).Text = PluginSettings.DefaultClassProperties(pIndex).Value
+                    Dim pTag As PropertyWrapper = _propWrap
+                    pTag.Value = PluginSettings.DefaultClassProperties(pIndex).Value
+                    pTag.ValueID = PluginSettings.DefaultClassProperties(pIndex).ValueID
+                    lstitem.Tag = pTag
+
+                End If
             End If
 
             If Not lstitem.Checked Then

@@ -3,14 +3,24 @@
 Public Class PropertyWrapper
 
 #Region " Properties "
+    Public Property IsAutomatic As Boolean
+
+    Public Property IsCalculated As Boolean
     Public Property PropertyID As Integer
     Public Property Value As Object
     Public Property RequiredProperty As Boolean = False
 
     Public ReadOnly Property PropertyDescription(Vault As Vault) As String
         Get
-            Dim propDef = MFilesPropertyDef(Vault)
-            Return propDef.Name + " (" + propDef.ID.ToString + ")"
+
+            Try
+                Dim propDef = MFilesPropertyDef(Vault)
+                Return propDef.Name + " (" + propDef.ID.ToString + ")"
+            Catch ex As Exception
+                Return Nothing
+            End Try
+
+
         End Get
     End Property
 
@@ -60,6 +70,8 @@ Public Class PropertyWrapper
         PropertyID = PropertyDefID
         RequiredProperty = Required
         UseDocumentName = False
+        IsAutomatic = False
+        IsCalculated = False
     End Sub
 #End Region
 

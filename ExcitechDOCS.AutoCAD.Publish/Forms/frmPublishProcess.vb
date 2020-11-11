@@ -74,6 +74,9 @@ Public Class frmPublishProcess
     Private Sub ProcessSheets()
         Dim pCount As Integer = 0
 
+        Debugger.Launch()
+        Debugger.Break()
+
         For Each Layout As ViewArea In _layoutsForPublish
             'labelCurrentSheet.Text = $"Processing: {sheet.SheetNumber} - {sheet.SheetName}"
             labelCurrentSheet.Text = "Processing ..."
