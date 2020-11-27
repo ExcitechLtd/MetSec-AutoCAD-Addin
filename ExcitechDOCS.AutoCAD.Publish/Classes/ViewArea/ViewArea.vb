@@ -10,6 +10,7 @@ Public Class ViewArea
     Private _objectID As ObjectId
     Private _version As String = ""
     Private _objectVersion As ObjectVersion
+    Private _customProps As List(Of PropertyWrapper)
 #End Region
 
 #Region " Enums "
@@ -175,6 +176,13 @@ Public Class ViewArea
     Public Property ErrorMessage As String
 
     Public Property CustomObjectProperties As List(Of PropertyWrapper)
+        Get
+            Return _customProps
+        End Get
+        Set(value As List(Of PropertyWrapper))
+            _customProps = value
+        End Set
+    End Property
 #End Region
 
 #Region " State and Status "
@@ -193,7 +201,7 @@ Public Class ViewArea
         DrawingTemplate = New DrawingTemplate
         Disabled = False
 
-        CustomObjectProperties = New List(Of PropertyWrapper)
+        _customProps = New List(Of PropertyWrapper)
     End Sub
 #End Region
 

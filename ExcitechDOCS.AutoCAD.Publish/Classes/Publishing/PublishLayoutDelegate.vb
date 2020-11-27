@@ -162,7 +162,6 @@ Public Class PublishLayoutDelegate
             destDB.ReadDwgFile(_templateFilename, FileOpenMode.OpenForReadAndAllShare, True, "")
             destDB.CloseInput(True)
 
-
             For Each layerName As String In foundLayouts
                 Dim srcObjID As ObjectId = Nothing
                 If layerName.ToUpperInvariant.EndsWith(My.Settings.ModelLayer.ToUpperInvariant) Then
@@ -278,7 +277,7 @@ Public Class PublishLayoutDelegate
                     Dim mctrPt As New Autodesk.AutoCAD.Geometry.Point2d((mExtens.MaxPoint.X + mExtens.MinPoint.X) * 0.5, (mExtens.MaxPoint.Y + mExtens.MinPoint.Y) * 0.5)
                     If wid > (hgt * asp) Then hgt = wid * asp
 
-                    vp.ViewHeight = hgt * 1.01
+                    'vp.ViewHeight = hgt * 1.01
                     vp.ViewCenter = mctrPt
 
                     ''hide the view layer

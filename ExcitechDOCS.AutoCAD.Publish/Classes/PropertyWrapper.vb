@@ -73,6 +73,12 @@ Public Class PropertyWrapper
         IsAutomatic = False
         IsCalculated = False
     End Sub
+
+    Public Sub New()
+        UseDocumentName = False
+        IsAutomatic = False
+        IsCalculated = False
+    End Sub
 #End Region
 
 #Region " Methods "

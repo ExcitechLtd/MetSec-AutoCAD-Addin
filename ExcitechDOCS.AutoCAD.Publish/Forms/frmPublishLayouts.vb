@@ -453,33 +453,46 @@ Public Class frmPublishLayouts
     End Sub
 
     Private Sub btnEdit_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btnEdit.ItemClick
-
         Dim viewArea As ViewArea = AdvBandedGridView1.GetFocusedRow
         Dim rowHandle As Integer = AdvBandedGridView1.FocusedRowHandle
         Dim frmEdit As New frmSetItemProperties
-        frmEdit.viewArea = viewArea
+
+        Dim vaKey As Guid = viewArea.Key
+        Dim vaIndex As Integer = ViewHelper.Selections.FindIndex(Function(v) v.Key = vaKey)
+        frmEdit.viewArea = ViewHelper.Selections(vaIndex)
 
         frmEdit.StartPosition = FormStartPosition.CenterParent
         If frmEdit.ShowDialog() = DialogResult.OK Then
-            viewArea.ExportDWG.Export = frmEdit.chkDWG.Checked
-            viewArea.ExportPDF.Export = frmEdit.chkPDF.Checked
+            ViewHelper.Selections(vaIndex).ExportDWG.Export = frmEdit.chkDWG.Checked
+            ViewHelper.Selections(vaIndex).ExportPDF.Export = frmEdit.chkPDF.Checked
 
-            viewArea.Template = frmEdit.cbTemplate.SelectedValue
-            viewArea.LayoutName = frmEdit.cbLayout.SelectedItem
+            ViewHelper.Selections(vaIndex).Template = frmEdit.cbTemplate.SelectedValue
+            ViewHelper.Selections(vaIndex).LayoutName = frmEdit.cbLayout.SelectedItem
+
+            ''add any overriden properties to the viewarea
+            ViewHelper.Selections(vaIndex).CustomObjectProperties = New List(Of PropertyWrapper)
+
+            For Each lvItem As ListViewItem In frmEdit.lvItemProps.Items
+                If Not lvItem.Checked Then Continue For
+
+                Dim pTag As PropertyWrapper = lvItem.Tag
+                Dim nProp As New PropertyWrapper With {
+                    .IsAutomatic = pTag.IsAutomatic,
+                    .IsCalculated = pTag.IsCalculated,
+                    .PropertyID = pTag.PropertyID,
+                    .RequiredProperty = pTag.RequiredProperty,
+                    .UseDocumentName = pTag.RequiredProperty,
+                    .Value = pTag.Value,
+                    .ValueID = pTag.ValueID
+                }
+                ViewHelper.Selections(vaIndex).CustomObjectProperties.Add(nProp)
+            Next
 
             AdvBandedGridView1.RefreshData() ''tell the grid the datasource has updated
             AdvBandedGridView1.RefreshRow(rowHandle) ''if we dont do this the checkboxes dont reflect any changes
 
-            ''add any overriden properties to the viewarea
-            viewArea.CustomObjectProperties.Clear()
-
-            For Each lvItem As ListViewItem In frmEdit.lvItemProps.Items
-                If Not lvItem.Checked Then Continue For
-                viewArea.CustomObjectProperties.Add(lvItem.Tag)
-
-            Next
-
         End If
+
     End Sub
 
 #End Region
